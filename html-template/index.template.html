@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo Ajax with GridOne</title> 
+<script type="text/javascript" src="GridOne.js"></script>
+<script type="text/javascript">
+
+ 
+var gridOne;
+/*get gridone*/
+function getGrid() {	
+    return document.GridOne;		//it may be customized again
+}
+
+/*********************************************init grid*********************************************/
+/*init for grid one. This function is called by GridOne internally */
+function FristinitializeHandler() 
+{
+	mGrid = getGrid();
+	
+			    mGrid.setHeaderArray(header);
+				mGrid.setDataProviderArray(dataProvider);
+				
+				mGrid.setColWidthHeight(100,25,1000,300);
+				 
+				mGrid.setRowMerge(1,2,0,0xFFE4E1); //setRowMerge(numStartRowIndex,numEndRowIndex,numColumnIndex,bgColor)
+				mGrid.setColMerge(1,1,9,0xFFE4E1);//setColMerge(numRowIndex,numStartColumnIndex,numEndColumnIndex, bgColor)
+		 
+				mGrid.setRowMerge(4,6,0,0xFFE4E1);
+				mGrid.setColMerge(4,1,5,0xFFE4E1);
+				mGrid.setColMerge(6,1,5,0xFFE4E1);
+ 			
+				mGrid.setRowMerge(7,8,0,0xFFE4E1);
+				mGrid.setColMerge(8,1,7,0xFFE4E1);
+ 			
+				mGrid.setRowMerge(10,12,0,0xFFE4E1);
+				mGrid.setColMerge(10,1,5,0xFFE4E1);
+				
+			    mGrid.creatGrid(); // After setHeaderArray, setDataProviderArray and other method.
+}
+ 
+var header =new Array();
+    header=["Header1","Header2","Header3","Header4","Header5","Header6","Header7","Header8","Header9","Header10"]; //textHeader, width,height
+				 
+				
+var dataProvider =new Array();
+				 
+    dataProvider=[["row1col1","row1col2","row1col3","row1col4","row1col5","row1col6","row1col7","row1col8","row1col9","row1col10"],
+					          ["row2col1","row2col2","row2col3","row2col4","row2col5","row2col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row3col1","row3col2","row3col3","row3col4","row3col5","row3col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row4col1","row4col2","row4col3","row4col4","row4col5","row4col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row5col1","row5col2","row5col3","row5col4","row5col5","row5col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row6col1","row6col2","row6col3","row6col4","row6col5","row6col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row7col1","row7col2","row7col3","row7col4","row7col5","row7col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row8col1","row8col2","row8col3","row8col4","row8col5","row8col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row9col1","row9col2","row9col3","row9col4","row9col5","row9col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row10col1","row10col2","row10col3","row10col4","row10col5","row10col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row1col1","row1col2","row1col3","row1col4","row1col5","row1col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row2col1","row2col2","row2col3","row2col4","row2col5","row2col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row3col1","row3col2","row3col3","row3col4","row3col5","row3col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row4col1","row4col2","row4col3","row4col4","row4col5","row4col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row5col1","row5col2","row5col3","row5col4","row5col5","row5col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row6col1","row6col2","row6col3","row6col4","row6col5","row6col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row7col1","row7col2","row7col3","row7col4","row7col5","row7col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row8col1","row8col2","row8col3","row8col4","row8col5","row8col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["row9col1","row9col2","row9col3","row9col4","row9col5","row9col6","row1col7","row1col8","row1col9","row1col10"],
+							  ["dd","row10col2","row10col3","row10col4","row10col5","row10col6","row1col7","row1col8","row1col9","row1col10"]];
+</script>
+</head>
+<body>
+		<div>
+		  <script type="text/javascript">
+		   initGridOne(1050,500,'GridOne','flash','','A0B0C0C6-000148-156641','false','fast','Frist');
+		  </script>
+		</div>
+	   
+</body>
+</html>

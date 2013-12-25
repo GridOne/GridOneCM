@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+//  ACTSONE COMPANY
+//  Copyright 2013 Actsone 
+//  All Rights Reserved.
+//
+//	This program is free software: you can redistribute it and/or modify
+//	it under the terms of the GNU General Public License as published by
+//	the Free Software Foundation, either version 3 of the License, or
+//	(at your option) any later version.
+//
+//	This program is distributed in the hope that it will be useful,
+//	but WITHOUT ANY WARRANTY; without even the implied warranty of
+//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//	GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License
+//	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" 
+			   initialize="initializeHandler(event)" 
+			   creationComplete="application1_creationCompleteHandler(event)" xmlns:actsone="com.actsone.*" >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actsone.Global;
+			import com.actsone.MGrid;
+			
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+ 
+			private var header:Array=new Array();
+			
+			private var dataProvider:Array=new Array();
+			
+			[Bindable]
+			private var gWidth:Number;
+			[Bindable]
+			private var gHeight:Number;
+			
+			/**************************************************************
+			 * initial application
+			 * */
+			protected function initializeHandler(event:FlexEvent):void
+			{
+				if (Capabilities.hasIME)
+				{
+					try
+					{
+						IME.enabled = true;
+						//IME.conversionMode = IMEConversionMode.KOREAN;					
+					}
+					catch (error:Error)
+					{
+						//statusText.text = "Unable to set conversion mode.\n" + error.message;
+					}
+				} 
+			}
+			
+			/**************************************************************
+			 * Creation complete handler
+			 * */
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				Global.initCallback(this);
+				callLater(dispatchInitialEvent);
+             
+			}
+			
+			/*************************************************
+			 * After init GridOne completed: dispatch event
+			 *************************************************/
+			private function dispatchInitialEvent():void
+			{    
+				 var initialFunction:String=FlexGlobals.topLevelApplication.parameters.initialize;
+				 ExternalInterface.call(initialFunction);
+				 
+			}
+			
+			/**************************************************************
+			 * create Grid
+			 * */
+			public function creatGrid():void
+			{
+				mGrid.defineGrid();
+			 //	Alert.show("creat" + this.height);
+			}
+			
+			/**************************************************************
+			 *  set data provider as array
+			 * */
+			public function setDataProviderArray(arrData:Array):void
+			{
+				 mGrid.dataProvider=arrData;
+			}
+			
+			/**************************************************************
+			 *  set header data as array
+			 * */
+			public function setHeaderArray(arrHeader:Array):void
+			{
+				mGrid.headerInfor=arrHeader;
+		 
+			}
+			
+			/**************************************************************
+			 *  set row merge information
+			 * */
+			public function setRowMerge(startRowIndMerge:Number,endColIndMerge:Number,inColInd:Number,bgColor:uint):void
+			{
+				mGrid.setRowMerge(startRowIndMerge,endColIndMerge,inColInd,bgColor);
+			}
+			
+			/**************************************************************
+			 * set column merge information
+			 * */
+			public function setColMerge(rowInd:Number,startColIndMerge:Number,endColIndMerge:Number, bgColor:uint):void
+			{
+				mGrid.setColMerge(rowInd,startColIndMerge,endColIndMerge,bgColor);
+			}
+			
+			/**************************************************************
+			 * set column width, row height, show Grid width, show Grid Height 
+			 * */
+			public function setColWidthHeight(colw:Number,rowh:Number,showWidth:Number,showHeight:Number):void
+			{
+				mGrid.cellWidth=colw;
+				mGrid.cellHeight=rowh;
+				
+				this.gWidth = showWidth;  
+				this.gHeight=showHeight;
+			 
+			}
+			
+			public function addComboAt(columnIndex:Number,rowIndex:Number):void
+			{
+				
+			}
+			
+			public function addButtonAt(columnIndex:Number,rowIndex:Number):void
+			{
+				
+			}
+ 
+		]]>
+	</fx:Script>
+	<mx:HBox id="hbox" width="100%" x="0" y="0" height="100%"  borderColor="0x696969" >
+		 <actsone:MGrid id="mGrid" height="100%" width="100%"  gridHeight="{this.gHeight}" gridWidth="{this.gWidth}" />
+	</mx:HBox>
+</s:Application>
